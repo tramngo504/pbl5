@@ -1,0 +1,41 @@
+{% extends "common/layout.html" %}
+{% block body %}
+    <h3 style="margin-left: 50px">Thêm động tác</h3>
+    <form action="/addPose/" class="form-contact" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="name" style="width: 150px">Tên động tác</label>
+        <input type="text" name="name"><br>
+
+        <label for="image1" style="width: 150px">Hình 1</label>
+        <input type="file" name="image1"><br>
+
+        <label for="image2" style="width: 150px">Hình 2</label>
+        <input type="file" name="image2"><br>
+
+        <label for="image3" style="width: 150px">Hình 3</label>
+        <input type="file" name="image3"><br>
+
+        <label for="image4" style="width: 150px">Hình 4</label>
+        <input type="file" name="image4"><br>
+
+        <label for="image5" style="width: 150px">Hình 5</label>
+        <input type="file" name="image5"><br>
+
+        <label for="image6" style="width: 150px">Hình 6</label>
+        <input type="file" name="image6"><br>
+
+        <label for="image7" style="width: 150px">Hình 7</label>
+        <input type="file" name="image7"><br>
+
+        <label for="image8" style="width: 150px">Hình 8</label>
+        <input type="file" name="image8"><br>
+
+        <label for="image9" style="width: 150px">Hình 9</label>
+        <input type="file" name="image9"><br>
+
+        <label for="image10" style="width: 150px">Hình 10</label>
+        <input type="file" name="image10"><br>
+
+        <button class="btn btn-primary" type="submit" style="margin-top: 20px">Thêm</button>
+    </form>
+{% endblock body %}

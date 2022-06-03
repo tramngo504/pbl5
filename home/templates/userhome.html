@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body bgcolor="lavender">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#FF9999">
+        <div class="container-fluid" style ="margin-left:30px; margin-right:30px">
+          <a class="navbar-brand" href="/homeuser/">Trang chủ</a>
+          <a class="navbar-brand" href="/accountview/{{userid}}">Thông tin cá nhân</a>
+          <a class="navbar-brand" href="/account-view/course/my-course">Khoá học</a>
+          <a class="navbar-brand" href="/capture/">Chụp ảnh</a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {%if 'username' not in request.session%}
+              <a class="navbar-brand" href="/login/" style="float:right;">Đăng nhập</a>
+            {%else%}
+              <a class="navbar-brand" href="/login/" style="float:right;">Đăng xuất</a>
+            {%endif%}
+          </div>
+            <form class="d-flex" action = "home" method = "post">
+              {% csrf_token %}
+              <input class="form-control me-2" name = "name" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" name = "btnsearch" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container">
+        <div class="row row-cols-4">
+          {%if pose_list != null %}
+            {%for pose in pose_list%}
+              <div class="col">
+                  <nav class="navbar navbar-light bg-success p-2" style="--bs-bg-opacity: .3; margin-top: 25px;">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="detail/{{pose.idPose}}">
+                            <img src="media/{{pose.image1}}" alt="" width="180" height="130" class="d-inline-block align-text-top">
+                            <h5 style="text-align:center">{{pose.name}}</h5>
+                        </a>
+                    </div>
+                </nav>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+          
+      </div>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</html>
